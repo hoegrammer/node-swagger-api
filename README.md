@@ -103,7 +103,3 @@ Or, if you'd like to automatically copy tests (overwriting existing tests) into 
 ```
 npm test
 ```
-
-
-
-
