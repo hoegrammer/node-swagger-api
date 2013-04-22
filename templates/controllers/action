@@ -1,0 +1,5 @@
+{{comment}}
+module.exports.{{action}} = function(req, params, callback) {
+  var response = {{response}};
+  return callback(null, response);
+};

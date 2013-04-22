@@ -1,0 +1,28 @@
+{
+  "name": "node-swagger-api",
+  "version": "0.0.1",
+  "description": "Generate API documentation, controllers, and tests from swagger specs.",
+  "main": "index.js",
+  "scripts" : {
+   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/airbnb/node-swagger-api.git"
+  },
+  "dependencies": {
+    "swagger-ui":"0.1.13",
+    "underscore":"1.4.4",
+    "async":"0.2.6",
+    "fs.extra":"1.2.0",
+    "node-dir":"0.0.3"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "sinon": "1.4.2"
+  },
+  "engines": {
+    "node": "0.8.22"
+  },
+  "private": true
+}

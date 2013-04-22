@@ -1,0 +1,13 @@
+
+it('should support {{path}}');
+// it('should support " + route.path + "', function(done) {
+//   var api = {method:'" + route.method + "',path:'" + route.path + "'};
+//   testHelper.login('testUserName', api);
+//   testHelper.makeRequest(api, function(err, response) {
+//     if (err) throw err;
+//     // var json = JSON.parse(response.body);
+//     expect(json).to.have.keys(['a','b','c']);
+//     console.log('pending');
+//     done();
+//   });
+// });

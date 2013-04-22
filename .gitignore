@@ -1,0 +1,14 @@
+example/node_modules/.bin/
+example/node_modules/async/
+example/node_modules/commander/
+example/node_modules/express/
+example/node_modules/fs.extra/
+example/node_modules/mocha/
+example/node_modules/should/
+example/node_modules/sinon/
+example/node_modules/underscore/
+node_modules/
+example/build
+example/public
+example/test/*
+example/app/controllers/*

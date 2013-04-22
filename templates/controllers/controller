@@ -1,0 +1,15 @@
+/**
+* {{controllerName}}
+*/
+
+/**
+* Return routes for this controller
+* example: routes = [{method:'get', path:'/hello', action:'hello', role:'guest'}]
+*/
+module.exports.routes = function() {
+  return [
+{{routes}}
+  ];
+};
+
+{{actions}}

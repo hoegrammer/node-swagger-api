@@ -1,0 +1,19 @@
+//var {{name}} = require('{{pathToController}}');
+var should = require('should');
+var sinon = require('sinon');
+var _ = require('underscore');
+
+
+describe('{{name}}', function() {
+
+  // before(function(done) {
+  //   done();
+  // });
+
+  // after(function(done) {
+  //   done();
+  // });
+
+{{tests}}
+
+});
