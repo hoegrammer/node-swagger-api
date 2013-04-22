@@ -6,8 +6,8 @@
   "scripts" : {
     "start" : "node app.js",
     "test" : "NODE_ENV=test mocha --ui bdd --reporter spec ./test --recursive ",
-    "genAll": "node ./scripts/genDocs.js --basePath http://localhost:8080 --copy ./public; node ./scripts/genControllers.js --clean --copy ./app/controllers; node ./scripts/genTests.js --clean --copy ./test",
-    "genDocs": "node ./scripts/genDocs.js --basePath http://localhost:8080 --copy ./public",
+    "genAll": "node ./scripts/genDocs.js --basePath http://localhost:3030 --copy ./public; node ./scripts/genControllers.js --clean --copy ./app/controllers; node ./scripts/genTests.js --clean --copy ./test",
+    "genDocs": "node ./scripts/genDocs.js --basePath http://localhost:3030 --copy ./public",
     "genControllers": "node ./scripts/genControllers.js --clean",
     "genTests": "node ./scripts/genTests.js --clean"
    },

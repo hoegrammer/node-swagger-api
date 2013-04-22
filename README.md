@@ -44,17 +44,17 @@ cd example
 npm run-script genDocs
 ```
 
-(see package.json for genDocs script definition, or call the script directly:  `node ./scripts/genDocs.js --basePath http://localhost:8080 --copy ./public`)
+(see package.json for genDocs script definition, or call the script directly:  `node ./scripts/genDocs.js --basePath http://localhost:3030 --copy ./public`)
 
 *  Run the test server
 ```
 cd example
-node app -p 8080
+node app -p 3030
 ```
 
 *  View Swagger docs in the browser
 ```
-http://localhost:8080/api-docs
+http://localhost:3030/api-docs
 ```
 
 Click on reservation link...
@@ -76,11 +76,7 @@ Or, if you'd like to automatically copy controllers (overwriting existing contro
 
 *  Start the server `node app`
 
-*  View available routes from the root directory.  Try the following:
-```
-http://localhost:8080/
-http://localhost:8080/v1/reservations
-```
+*  View available routes from the root directory.  Try the following: `http://localhost:3030/`
 
 
 ## Generate Tests ##

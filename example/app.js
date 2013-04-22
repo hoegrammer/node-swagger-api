@@ -49,7 +49,7 @@ router.buildRoutes(app, controllerDir, function(err) {
     process.exit();
   }
   // start server
-  var port = commander.port ? commander.port : 8080;
+  var port = commander.port ? commander.port : 3030;
   app.listen(port);
   console.log('Listening on port ' + port);
   console.log('Supported route list:  http://localhost:' + port + '/');
