@@ -16,7 +16,7 @@ nvm run 0.8
 
 Download the node-swagger-api library:
 ```
-git clone https://github.com/airbnb/node-swagger-api.git
+git clone https://github.com/braitz/node-swagger-api.git
 cd node-swagger-api
 npm install
 ```
