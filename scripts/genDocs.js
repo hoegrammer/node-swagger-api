@@ -1,7 +1,10 @@
 /**
 *  Generate Swagger documentation views from Swagger api specs
 */
-var swagger = require('node-swagger-api');
+
+'use strict';
+
+var generateDocs = require('../lib/generateDocs');
 var commander = require('commander');
 var path = require('path');
 var util = require('./util');
@@ -21,7 +24,7 @@ options.apiSrc = commander.src || './api';
 options.modelSrc = commander.models || (options.apiSrc + '/models');
 options.outputDir = commander.dest || './build';
 options.basePath = commander.basePath || 'http://localhost:3030';
-options.apiVersion = commander.apiVersion || "0.1";
+options.apiVersion = commander.apiVersion || '0.1';
 
 // make sure we have a full path, not a relative one
 if (!options.apiSrc.match(/^\//)) {
@@ -32,12 +35,16 @@ if (!options.modelSrc.match(/^\//)) {
 }
 
 
-swagger.generateDocs.run(options, function(err, buildDir) {
-  if (err) console.log("Error: " + err);
+generateDocs.run(options, function(err, buildDir) {
+  if (err) {
+      console.log('Error: ' + err);
+  }
   // copy results to chosen destination
   if (commander.copy) {
     util.copy(buildDir, commander.copy, function(err) {
-      if (err) console.log("Error copying results: " + err);
+      if (err) {
+          console.log('Error copying results: ' + err);
+      }
     });
   }
 });

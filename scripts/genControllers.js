@@ -1,7 +1,10 @@
 /**
 *  Generate stubbed express controllers/routes from Swagger api specs
 */
-var swagger = require('node-swagger-api');
+
+'use strict';
+
+var generateControllers = require('../lib/generateControllers');
 var commander = require('commander');
 var path = require('path');
 var util = require('./util');
@@ -20,7 +23,9 @@ var options = {};
 options.apiSrc = commander.src || './api';
 options.modelSrc = commander.models || (options.apiSrc + '/models');
 options.outputDir = commander.dest || './build';
-if (commander.clean) options.clean = true;
+if (commander.clean) {
+    options.clean = true;
+}
 
 // make sure we have a full path, not a relative one
 if (!options.apiSrc.match(/^\//)) {
@@ -31,11 +36,15 @@ if (!options.modelSrc.match(/^\//)) {
 }
 
 
-swagger.generateControllers.run(options, function(err, buildDir) {
-  if (err) console.log("Error: " + err);
+generateControllers.run(options, function(err, buildDir) {
+  if (err) {
+      console.log('Error: ' + err);
+  }
   if (commander.copy) {
     util.copy(buildDir, commander.copy, function(err) {
-      if (err) console.log("Error copying results: " + err);
+      if (err) {
+          console.log('Error copying results: ' + err);
+      }
     });
   }
 });
