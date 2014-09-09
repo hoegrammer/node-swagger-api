@@ -67,8 +67,8 @@ function render(route) {
     // get correct controller/action that will retrieve the data
     route.controller[route.action](req, params, function(err, json) {
       if (err) {
-        // handle error in some consistent way
-        next(err);
+          res.status(err.code);
+          res.send();
       } else {
         res.json(json);
       }
