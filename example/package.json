@@ -8,8 +8,8 @@
     "test" : "NODE_ENV=test mocha --ui bdd --reporter spec ./test --recursive ",
     "genAll": "node ./scripts/genDocs.js --basePath http://localhost:3030 --copy ./public; node ./scripts/genControllers.js --clean --copy ./app/controllers; node ./scripts/genTests.js --clean --copy ./test",
     "genDocs": "node ./scripts/genDocs.js --basePath http://localhost:3030 --copy ./public",
-    "genControllers": "node ./scripts/genControllers.js --clean",
-    "genTests": "node ./scripts/genTests.js --clean"
+    "genControllers": "node ./scripts/genControllers.js --copy app/controllers",
+    "genTests": "node ./scripts/genTests.js --copy test"
    },
   "dependencies": {
     "express":"3.1.0",
