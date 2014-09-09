@@ -68,13 +68,11 @@ cd example
 npm run-script genControllers
 ```
 
-(or call the script directly:  `node ./scripts/genControllers.js --clean`)
+This will create controllers in the ./app/controllers, overwriting existing ones. If you want to build them in a temporary location first, use node `./scripts/genControllers.js` which will save them to ./build/controllers
 
-*  View controller code in node-swagger-api/example/build/controllers/...  Edit, then move to ./app/controllers directory.
+node ./scripts/genControllers.js`
 
-Or, if you'd like to automatically copy controllers (overwriting existing controllers) into the "proper" example run-time directory, use the copy argument:  `node ./scripts/genControllers.js --clean --copy ./app/controllers`
-
-*  Start the server `node app`
+*  Start the server `npm start`
 
 *  View available routes from the root directory.  Try the following: `http://localhost:3030/`
 
@@ -88,12 +86,7 @@ cd example
 npm run-script genTests
 ```
 
-(or call the script directly:  `node ./scripts/genTests.js --clean`)
-
-*  View tests in node-swagger-api/example/build/tests/...  Edit, then move to ./test directory.
-
-
-Or, if you'd like to automatically copy tests (overwriting existing tests) into the primary test directory, use the copy argument:  `node ./scripts/genTests.js --clean --copy ./test`
+This will create tests in the ./test dir, overwriting existing tests. If you want to build them in a temporary location first, use node `./scripts/genTest.js` which will save them to ./build/test
 
 *  Run tests
 ```
