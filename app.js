@@ -32,7 +32,7 @@ function middleware(app) {
 commander
   .usage('[NODE_ENV=<env>] node app [options]')
   .option('-p, --port [number]', 'server port')
-  .option('-d, --domain [string]', 'domain url (without port)')
+  .option('-w, --weburl [string]', 'public url (without port)')
   .parse(process.argv);
 
 
@@ -54,11 +54,11 @@ router.buildRoutes(app, controllerDir, function(err) {
   }
   // start server
   var port = commander.port ? commander.port : 3030;
-  var domain = commander.domain ? commander.domain : 'http://localhost';
+  var weburl = commander.weburl ? commander.weburl : 'http://localhost';
   app.listen(port);
   console.log('Listening on port ' + port);
-  console.log('Supported route list:  ' + domain + ':' + port + '/');
-  console.log('Online swagger docs: ' + domain + ':' + port + '/api-docs');
+  console.log('Supported route list:  ' + weburl + ':' + port + '/');
+  console.log('Online swagger docs: ' + weburl + ':' + port + '/api-docs');
 });
 
 // Expose the public dir
