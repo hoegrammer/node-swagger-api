@@ -1,3 +1,5 @@
+'use strict';
+
 /**
 * Build a simple express app to demo swagger documentation
 */
@@ -12,8 +14,8 @@ var fs = require('fs.extra');
 function checkSwaggerDocs() {
   var swaggerFilePath = __dirname + '/public/swagger/index.html';
   if (!fs.existsSync(swaggerFilePath)) {
-    console.log("Error:  missing Swagger view: " + swaggerFilePath);
-    console.log("Generate views via:  `npm run-script docs`");
+    console.log('Error:  missing Swagger view: ' + swaggerFilePath);
+    console.log('Generate views via:  `npm run-script docs`');
     return false;
   }
   return true;
@@ -30,7 +32,9 @@ function middleware(app) {
 commander
   .usage('[NODE_ENV=<env>] node app [options]')
   .option('-p, --port [number]', 'server port')
+  .option('-d, --domain [string]', 'domain url (without port)')
   .parse(process.argv);
+
 
 
 if (!checkSwaggerDocs()) {
@@ -45,14 +49,21 @@ middleware(app);
 var controllerDir = __dirname + '/app/controllers';
 router.buildRoutes(app, controllerDir, function(err) {
   if (err) {
-    console.log("Error: " + err);
+    console.log('Error: ' + err);
     process.exit();
   }
   // start server
+  console.log(commander);
   var port = commander.port ? commander.port : 3030;
+  var domain = commander.domain ? commander.domain : 'http://localhost';
   app.listen(port);
   console.log('Listening on port ' + port);
-  console.log('Supported route list:  http://localhost:' + port + '/');
-  console.log('Online swagger docs: http://localhost:' + port + '/api-docs');
+  console.log('Supported route list:  ' + domain + ':' + port + '/');
+  console.log('Online swagger docs: ' + domain + ':' + port + '/api-docs');
 });
 
+// Expose the public dir
+app.use(express.static(__dirname + '/public')); 
+
+// Export the app for use in unit tests
+module.exports.testthis = app;
