@@ -1,5 +1,6 @@
+'use strict';
+
 var _ = require('underscore');
-var fs = require('fs.extra');
 var dir = require('node-dir');
 
 // strip off controllerDir prefix and .js|.coffee suffix, then replace any
@@ -18,7 +19,9 @@ function controllerRouteInfo(controllerDir, callback) {
   var controller, controllerName;
   // recursively find files from controllerDir
   dir.files(controllerDir, function(err, files) {
-    if (err) return callback(err);
+    if (err) {
+        return callback(err);
+    }
     files.forEach(function(fullPath) {
       // only accept files that end in .js or .coffee
       if (fullPath.match(/.js$|.coffee$/)) {
@@ -29,7 +32,9 @@ function controllerRouteInfo(controllerDir, callback) {
           controller.routes().forEach(function(r) {
             if (r.path && r.action) {
               // decorate the route with correct defaults
-              if (!r.method) r.method = 'get';    // set correct method
+              if (!r.method) {
+                  r.method = 'get';    // set correct method
+              }
               r.path = r.path;                    // apply route prefix to path
               r.controller = controller;          // render needs access to real controller
               r.controllerPath = fullPath;        // might be useful
@@ -57,19 +62,20 @@ function routeSummary(app) {
 
 // Given a function that retrieves the data, consistently send the response
 function render(route) {
-  return function(req, res, next) {
+  return function(req, res) {
     // extract params from request
-    params = req.query || {};
+    var params = req.query || {};
     req.route.keys.forEach(function(routeKey) {
       params[routeKey.name] = req.route.params[routeKey.name];
     });
 
     // get correct controller/action that will retrieve the data
-    route.controller[route.action](req, params, function(err, json) {
+    route.controller[route.action](req, params, function(err, json, status) {
       if (err) {
           res.status(err.code);
           res.send();
       } else {
+          res.status(status);
         res.json(json);
       }
       // DO NOT FORWARD TO NEXT -- END CHAIN HERE
