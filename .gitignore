@@ -12,3 +12,5 @@ example/build
 example/public
 example/test/*
 example/app/controllers/*
+build/
+public/
